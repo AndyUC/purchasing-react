@@ -1,0 +1,274 @@
+.homepage {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.homepage .div {
+  background-color: #ffffff;
+  border-color: #eeeeee;
+  height: 1133px;
+  position: relative;
+  width: 428px;
+}
+
+.homepage .overlap {
+  height: 292px;
+  left: 19px;
+  position: absolute;
+  width: 394px;
+}
+
+.homepage .rectangle {
+  background-color: #d9d9d9;
+  height: 34px;
+  left: 106px;
+  position: absolute;
+  top: 228px;
+  width: 177px;
+}
+
+.homepage .ALL-PRODUCT {
+  height: 292px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 394px;
+}
+
+.homepage .overlap-group {
+  background-image: url(../image/catalog.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 292px;
+  position: relative;
+  width: 390px;
+}
+
+.homepage .ALL-PRODUCT-wrapper {
+  background-color: #d9d9d94c;
+  height: 36px;
+  left: 106px;
+  position: absolute;
+  top: 241px;
+  width: 178px;
+}
+
+.homepage .text-wrapper {
+  color: #ffffff;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0.75px;
+  line-height: 30px;
+  position: absolute;
+  text-align: center;
+  top: 2px;
+  white-space: nowrap;
+  width: 178px;
+}
+
+.homepage .text-wrapper-2 {
+  color: #ffffff;
+  font-family: "Montserrat-SemiBoldItalic", Helvetica;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 600;
+  left: 156px;
+  letter-spacing: 0.75px;
+  line-height: 20px;
+  position: absolute;
+  text-align: right;
+  top: 169px;
+  width: 223px;
+}
+
+.homepage .TIE {
+  height: 205px;
+  left: 19px;
+  position: absolute;
+  top: 810px;
+  width: 392px;
+}
+
+.homepage .div-wrapper {
+  background-image: url(../image/catalog.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 205px;
+  position: relative;
+  width: 390px;
+}
+
+.homepage .text-wrapper-3 {
+  color: #ffffff;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  left: 181px;
+  letter-spacing: 0.75px;
+  line-height: 30px;
+  position: absolute;
+  text-align: center;
+  top: 159px;
+  white-space: nowrap;
+  width: 47px;
+}
+
+.homepage .WATCH {
+  height: 234px;
+  left: 19px;
+  position: absolute;
+  top: 550px;
+  width: 392px;
+}
+
+.homepage .overlap-2 {
+  background-image: url(../image/watchCatalog.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 234px;
+  position: relative;
+  width: 390px;
+}
+
+.homepage .text-wrapper-4 {
+  color: #ffffff;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 122px;
+  letter-spacing: 0.75px;
+  line-height: 25px;
+  position: absolute;
+  text-align: center;
+  top: 198px;
+  width: 164px;
+}
+
+.homepage .CHAIN {
+  height: 208px;
+  left: 220px;
+  position: absolute;
+  top: 320px;
+  width: 191px;
+}
+
+.homepage .overlap-3 {
+  height: 208px;
+  position: relative;
+  width: 189px;
+}
+
+.homepage .chain {
+  height: 208px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 189px;
+}
+
+.homepage .rectangle-2 {
+  background-color: #d9d9d9;
+  height: 34px;
+  left: 33px;
+  position: absolute;
+  top: 149px;
+  width: 114px;
+}
+
+.homepage .text-wrapper-5 {
+  color: #000000;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 16px;
+  font-weight: 700;
+  height: 29px;
+  left: 41px;
+  letter-spacing: 0.75px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 152px;
+  width: 98px;
+}
+
+.homepage .GLASS {
+  height: 208px;
+  left: 19px;
+  position: absolute;
+  top: 320px;
+  width: 184px;
+}
+
+.homepage .overlap-4 {
+  height: 208px;
+  position: relative;
+  width: 182px;
+}
+
+.homepage .sunglass {
+  height: 208px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 182px;
+}
+
+.homepage .rectangle-3 {
+  background-color: #d9d9d9;
+  height: 34px;
+  left: 34px;
+  position: absolute;
+  top: 149px;
+  width: 107px;
+}
+
+.homepage .text-wrapper-6 {
+  color: #000000;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 16px;
+  font-weight: 700;
+  height: 29px;
+  left: 39px;
+  letter-spacing: 0.75px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  top: 152px;
+  width: 92px;
+}
+
+.homepage .group {
+  height: 70px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 428px;
+}
+.homepage .div .box {
+  background-color: #ffffff;
+  display: flex;
+  justify-content:space-between;
+  border: 2px #000000;
+  height: 60px;
+  width: 95%;
+}
+.homepage .div .box .bar{
+  padding-top: 20px;
+  padding-left: 20px;
+  position: static;
+  border: 1px #000000;
+  height: 21.61px;
+  width: 25.11px;
+}
+.homepage .div .box .cart{
+  padding-top: 20px;
+  height: 25.93px;
+  position: relative;
+  width: 25.11px;
+}

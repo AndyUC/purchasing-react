@@ -1,0 +1,25 @@
+.OrderWrapper{
+
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+}
+.OrderWrapper .Header{
+    align-self: center;
+}
+.OrderWrapper .cartWrapper{
+    align-self:center;
+}
+.OrderWrapper .Wrapper{
+    display: flex;
+    flex-direction: column;
+    row-gap:5px
+}
+.OrderWrapper .textbox{
+    width: 200px;
+}
+.OrderWrapper .submit{
+    width: 80px;
+    height:30px;
+    align-self: center;
+}

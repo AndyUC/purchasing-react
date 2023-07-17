@@ -1,0 +1,52 @@
+.filters{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 300px;
+    z-index: 11;
+    background-color: white;
+
+    margin-top: -140px;
+    margin-left: 125px;
+}
+
+.filters .filterWrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.filters .filterWrapper .sortbyPrice{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+.filters .priceFilter{
+    display: flex;
+    flex-direction: row;
+}
+.filters .priceFilter .pricevalue{
+    width: 30px;
+}
+.filters .priceFilter .distance{
+    width: 150px;
+}
+.filters .filterFooter{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+.filters .filterFooter .clearAll{
+    width: 80px;
+    height: 20px;
+}
+.filters .filterFooter .apply{
+    width: 80px;
+    height: 20px;
+}
+.filters .filterFooter .filterFooterDistance{
+    width: 160px;
+ 
+}

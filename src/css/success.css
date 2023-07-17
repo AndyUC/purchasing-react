@@ -1,0 +1,48 @@
+.ORDER-SUCCESS{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.ORDER-SUCCESS .successWraper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.ORDER-SUCCESS .successWraper .successImg{
+    width: 350px;
+    height: 300px;
+}
+
+.ORDER-SUCCESS .successWraper .SucessWraper{
+    position: static;
+}
+
+.ORDER-SUCCESS .successWraper .SucessWraper .SuccessText{
+    color: #333a3a;
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 22px;
+  font-weight: 700;
+  left: 0;
+  letter-spacing: 0.75px;
+  line-height: 27.5px;
+  position: static;
+  text-align: center;
+  top: 0;
+  width: 321px;
+}
+.ORDER-SUCCESS .successWraper .buymoreWraper{
+
+}
+.ORDER-SUCCESS .successWraper .buymoreWraper .buyMore{
+    width: 150px;
+    height: 40px;
+    font-size: x-large;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+

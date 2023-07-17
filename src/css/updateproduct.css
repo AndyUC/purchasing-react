@@ -1,0 +1,116 @@
+.productUpdateWrapper{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.productUpdateWrapper .fieldUpdate{
+    display: flex;
+    flex-direction: column;
+}
+.productUpdateWrapper .fieldUpdate .catalogWrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.productUpdateWrapper .fieldUpdate .catalogWrapper .catalogText{
+    width: 80px;
+    text-align: center;
+}
+.productUpdateWrapper .fieldUpdate .selectCatalogWrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 80px;
+    align-items: center;
+    position: absolute;
+    margin-top: 40px;
+    background-color: white;
+}
+.productUpdateWrapper .fieldUpdate .selectCatalogWrapper .option{
+    text-align: center;
+}
+.productUpdateWrapper .fieldUpdate .selectCatalogWrapper .chevron{
+    width: 20px;
+    height: 20px;
+
+}
+.productUpdateWrapper .product-image{
+   width: 200px;
+   height: 200px;
+  border: 0.5px dotted black;
+}
+
+.productUpdateWrapper .inputName{
+    width: 200px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .inputDescription{
+    width: 200px;
+    height:50px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .inputPrice{
+    width: 50px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size .inputSizeS{
+    width: 30px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size .inputSizeM{
+    width: 30px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size .inputSizeL{
+    width: 30px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size .inputSize39{
+    width: 30px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size .inputSize40{
+    width: 30px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size .inputSize41{
+    width: 30px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size .inputSize42{
+    width: 30px;
+    height:20px;
+    border-radius: 5px;
+}
+.productUpdateWrapper .updateSize .size {
+    display: flex;
+    flex-direction: row;
+}
+.productUpdateWrapper .updateSize .size .sizeTitle{
+   width: 50px;
+}
+
+.productUpdateWrapper .updateSubmit {
+    width: 200px;
+    display: flex;
+    height: 50px;
+    align-self: flex-end;
+    background-color: #333333;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+ }
+ .productUpdateWrapper .updateSubmit .updateSubmit-text{
+    color:white;
+ }
+ 

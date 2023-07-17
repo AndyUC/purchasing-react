@@ -1,0 +1,63 @@
+.cartProductBox{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    margin-left: 20px;
+    border-bottom: 1px solid black;
+}
+.cartProductBox .cartProductWrapper{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.cartProductBox .cartProductWrapper .cartProduct{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    row-gap: 10px;
+}
+.cartProductBox .cartProductWrapper .cartProduct .productimg{
+    width: 120px;
+    height: 120px;
+}
+.cartProductBox .cartProductWrapper .cartProduct .productname{
+    color: #333333;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 116px;
+    letter-spacing: 0.75px;
+    line-height: 18.8px;
+    position: static;
+    text-align: center;
+    white-space: nowrap;
+    width: 69px;
+
+}
+.cartProductBox .cartProductWrapper .cartProduct .price{
+    color: #333333;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 116px;
+    letter-spacing: 0.75px;
+    line-height: 18.8px;
+    position: static;
+    text-align: center;
+    white-space: nowrap;
+    width: 69px;
+   
+}
+.cartProductBox .cartProductWrapper .cartProduct .quantityWrapper{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    width: auto;
+}
+.cartProductBox .cartProductWrapper .cartProduct .size{
+    position: static;
+}

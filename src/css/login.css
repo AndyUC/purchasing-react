@@ -1,0 +1,41 @@
+.loginWraper{
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+.loginWraper .username{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+.loginWraper .password{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+.loginWraper .signin{
+    width: 200px;
+    height: 30px;
+    font-size: larger;
+}
+.loginWraper .login{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+   
+    align-items: center;
+}
+.loginWraper .login .signin{
+    width: 200px;
+    height: 30px;
+    font-size: larger;
+}
+.loginWraper .login .msg{
+    color:red;
+    text-align: center;
+}

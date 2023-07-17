@@ -1,0 +1,202 @@
+.menu-bar {
+    background-color: #ffffff;
+    flex-direction: row;
+    justify-content: center;
+    width: 250px;
+    position: absolute;
+  }
+  
+  .menu-bar .menu-wrapper {
+    background-color: #ffffff;
+    border: 1px #000000;
+    height: 260px;
+    width: 262px;
+  }
+  
+  .menu-bar .menu {
+    height: 257px;
+    position: relative;
+    top: 1px;
+    width: 245px;
+  }
+  
+  .menu-bar .overlap-group {
+    height: 257px;
+    position: relative;
+  }
+  
+  .menu-bar .menu-content {
+    background-color: #fffdfd;
+    height: 257px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 245px;
+  }
+  
+  .menu-bar .dashboard {
+    height: 24px;
+    left: 20px;
+    position: absolute;
+    top: 212px;
+    width: 178px;
+  }
+  
+  .menu-bar .text-wrapper {
+    color: #000000;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 14px;
+    font-weight: 700;
+    height: 24px;
+    left: 38px;
+    letter-spacing: 0.75px;
+    line-height: 17.5px;
+    position: absolute;
+    text-decoration: underline;
+    top: 0;
+    width: 138px;
+  }
+  
+  .menu-bar .enterpriseIcon {
+    height: 23px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 1px;
+    width: 23px;
+  }
+  
+  .menu-bar .hotline {
+    height: 22px;
+    left: 20px;
+    position: absolute;
+    top: 179px;
+    width: 146px;
+  }
+  
+  .menu-bar .div {
+    color: #000000;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 14px;
+    font-weight: 700;
+    height: 20px;
+    left: 42px;
+    letter-spacing: 0.75px;
+    line-height: 17.5px;
+    position: absolute;
+    top: 1px;
+    white-space: nowrap;
+    width: 102px;
+  }
+  
+  .menu-bar .phoneIcon {
+    height: 22px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 23px;
+  }
+  
+  .menu-bar .email {
+    height: 21px;
+    left: 20px;
+    position: absolute;
+    top: 147px;
+    width: 220px;
+  }
+  
+  .menu-bar .text-wrapper-2 {
+    color: #000000;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 10px;
+    font-weight: 700;
+    height: 18px;
+    left: 43px;
+    letter-spacing: 0.75px;
+    line-height: 12.5px;
+    position: absolute;
+    top: 0;
+    width: 176px;
+  }
+  
+  .menu-bar .emailIcon {
+    height: 21px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 22px;
+  }
+  
+  .menu-bar .about {
+    height: 23px;
+    left: 23px;
+    position: absolute;
+    top: 110px;
+    width: 168px;
+  }
+  
+  .menu-bar .text-wrapper-3 {
+    color: #000000;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 14px;
+    font-weight: 700;
+    height: 20px;
+    left: 40px;
+    letter-spacing: 0.75px;
+    line-height: 17.5px;
+    position: absolute;
+    top: 1px;
+    white-space: nowrap;
+    width: 126px;
+  }
+  
+  .menu-bar .aboutIcon {
+    height: 23px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 18px;
+  }
+  
+  .menu-bar .homepage {
+    height: 24px;
+    left: 16px;
+    position: absolute;
+    top: 73px;
+    width: 152px;
+    display: inline-block;
+  }
+  
+  .menu-bar .homepage .text-wrapper-4 {
+    color: #000000;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 14px;
+    font-weight: 700;
+    height: 20px;
+    left: 20px;
+    letter-spacing: 0.75px;
+    line-height: 17.5px;
+    position: absolute;
+    top: 1px;
+    white-space: nowrap;
+    width: 126px;
+  }
+
+  .menu-bar .homeIcon {
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 31px;
+  }
+  
+  .menu-bar .menu-icon {
+    height: 20px;
+    left: 19px;
+    position: absolute;
+    top: 44px;
+    width: 24px;
+  }
+  
