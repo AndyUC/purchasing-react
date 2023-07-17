@@ -7,7 +7,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Homebar from './module/public/homebar/homebar';
 
-import { PrivateRouter, PublicRouter } from './app';
+import { PublicRouter } from './app';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
