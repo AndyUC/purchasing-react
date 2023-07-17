@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router';
 export const Login=()=>{
     const navigate=useNavigate()
     const client = axios.create({
-        baseURL: "http://localhost:3000" 
+        baseURL: "https://purchasing-v1.onrender.com" 
       });
     const [username, setUsername]=useState('')
     const [password, setPassword]=useState('')

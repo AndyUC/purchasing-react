@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import '../../css/productparams.css'
+import axios from "axios";
 
 
 
@@ -10,20 +11,26 @@ import '../../css/productparams.css'
 export const GetProduct=()=>{
     const params = useParams();
     const id=params.id;
-    const api='http://localhost:3000/api/v1/products/'+id
+    const api='https://purchasing-v1.onrender.com/api/v1/products/'+id
     const[post,setPost]=useState(Object)
+
+    const fetchData= async(api:string)=>{
+      try {
+       const  res = await axios.get(api)
+       if(res.data.catalog==='Chain'||res.data.catalog==='Tie'){
+        setSize('sizeS')}
+      else{
+        setSize('size39')}
+      setPost(res.data)
+      setPost(res.data)
+      console.log(res.data)
+      } catch (error) {
+       console.log(error)
+      } 
+    }
     useEffect(()=>{
-      fetch(api)
-      .then(res=>res.json())
-      .then(posts=>{
-        console.log(posts)
-        if(posts.catalog==='Chain'||posts.catalog==='Tie'){
-          setSize('sizeS')}
-        else{
-          setSize('size39')}
-        setPost(posts)
-      })
-    },[api])
+      fetchData(api)
+      },[api])
     const[quantity,setQuantity]=useState(0)
     const handleAddclick=()=>{
       
@@ -82,7 +89,7 @@ export const GetProduct=()=>{
           <div className="Content">ADD TO CART</div>
         </div>
         ):
-          (<Link className="Addtocart" role='button' onClick={addToCart} to={'http://localhost:3001/api/v1/products/'} >
+          (<Link className="Addtocart" role='button' onClick={addToCart} to={'/api/v1/products/'} >
           <div className="Content">ADD TO CART</div>
         </Link>
         )}

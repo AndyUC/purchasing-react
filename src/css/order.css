@@ -23,3 +23,50 @@
     height:30px;
     align-self: center;
 }
+.OrderWrapper .orderFooter .amountOrder{
+    width: 310px;
+    text-align: center;
+    font-size: larger;
+    font-family: sans-serif;
+    color: red;
+}
+
+.OrderWrapper .orderFooter{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-top: 535px;
+    border: solid 0.5px black;
+    width: 100%;
+    background-color: white;
+}
+.OrderWrapper .orderFooter{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-top: 515px;
+    border: solid 0.5px black;
+    width: 100%;
+    background-color: white;
+}
+.OrderWrapper .orderFooter .Buy .text-Content{
+    text-align: center;
+    font-size: x-large;
+    font-family: sans-serif;
+    color:white;
+}
+.OrderWrapper .orderFooter .Buy{
+    width: 120px;
+    background-color: black;
+    height: 50px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

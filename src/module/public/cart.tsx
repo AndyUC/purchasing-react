@@ -1,5 +1,5 @@
 import React, {Fragment,useState,useEffect, Component, ChangeEvent, useRef} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import '../../css/cart.css'
 
@@ -73,6 +73,17 @@ type CartProductProps={
 
  export const Cart=()=>{
     const [carts,setCarts]=useState( localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '{}') : [])
+    const [amount, setAmount] = useState(0);
+    const navigate = useNavigate()
+    console.log(amount)
+    
+    useEffect(()=>{
+      let total =0;
+      carts.forEach((cart:any )=> {
+        total +=cart.price*cart.quantity
+      })
+    setAmount(total)},[carts])
+
   let newcarts= [...carts]
   console.log(carts)
     const updateQuantity=(index:number,quantity:number)=>{
@@ -97,9 +108,15 @@ type CartProductProps={
     }
     return(
     <div>
+       <div className="cartFooter">
+       <div className="saveCart" role="button" onClick={()=>{saveCart(); navigate('/api/v1/products')}}><div className="text-Content">Save</div></div>
+       <div className="amountCart">Total :{amount}$$$</div>
+       <div className="Buy" onClick={()=>{saveCart(); navigate('/api/v1/order')}}><div className="text-Content">Buy Cart</div></div>
+       </div>
+       <h1>BUILD CART</h1>
         <div>
             { carts.map((cart:any,index:number)=>
-              <li key={index}>  
+              <div key={index}>  
                 <CartProduct
                 index={index}
                 productid={cart._id}
@@ -113,15 +130,10 @@ type CartProductProps={
                 updateQuantity={updateQuantity}
                 updateSize={updateSize}
                 />
-                </li>)}
+                </div>)}
                 
         </div>
-        <div>
-       <button onClick={saveCart}>Save Change</button>
-       <Link className="saveAndBuy" to={'/api/v1/order'}>
-       <button onClick={saveCart}>Save and Buy</button>
-       </Link>
-       </div>
+       
     </div>
       )
   }

@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useEffect, useState } from "react";
 import axios from "axios";
 import { CartProduct } from "./cart";
 import '../../css/order.css'
@@ -51,7 +51,7 @@ const BuyCart=()=>{
   }
 export const Order=()=>{
     const client = axios.create({
-        baseURL: "http://localhost:3000" 
+        baseURL: "https://purchasing-v1.onrender.com" 
       });
     let navigate = useNavigate()
     const [carts,setCarts]=useState( localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '{}') : [])
@@ -59,11 +59,19 @@ export const Order=()=>{
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
+    const [amount, setAmount] = useState(0);
+    useEffect(()=>{
+      let total =0;
+      carts.forEach((cart:any )=> {
+        total +=cart.price*cart.quantity
+      })
+    setAmount(total)},[carts])
    
    const  addpost=async()=>{
     const cartdata: { productid: string; size: string; quantity: number; }[]=[]
     carts.map((cart:any)=>cartdata.push({productid:cart.productid,size:cart.size,quantity:cart.quantity}))
     console.log(cartdata)
+    
     try {
         
        const res= await client.post('/api/v1/order',{
@@ -76,7 +84,7 @@ export const Order=()=>{
     console.log(res.data)
     console.log('success')
     localStorage.removeItem('cart')
-    navigate('http://localhost:3001/api/v1/success')
+    navigate('/api/v1/success')
     } catch(error:any){
       window.alert(error.response.data.msg)
   }
@@ -100,6 +108,15 @@ export const Order=()=>{
     const emailpattern = "/^(([^<>()[\]\\.,;:\s@"+'"]+(\.[^<>()[\]\\.,;:\s@'+'"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
     return(
         <div className="OrderWrapper">
+          {(!orderName||(!phoneNumber)||(!address)||(!email))?
+             <div className="orderFooter">
+             <div className="amountOrder" >Total :{amount}$$$</div>
+             <div className="Buy" ><div className="text-Content">Comfirm</div></div>
+             </div>:
+             <div className="orderFooter">
+             <div className="amountOrder" >Total :{amount}$$$</div>
+             <div className="Buy" role="button" onClick={addpost}><div className="text-Content">Comfirm</div></div>
+             </div>}
             <h1 className="Header">GET YOUR ORDER</h1>
             <div className="Wrapper">
                  <a>Your name</a>
@@ -135,11 +152,7 @@ export const Order=()=>{
                 />
                 </li>)}   
              </div>
-             {(!orderName||(!phoneNumber)||(!address)||(!email))?
-             <button className="submit">SUBMIT</button>:
-            
-            <button className="submit" onClick={addpost}>SUBMIT</button>
-}
+             
         </div>
     )
 }

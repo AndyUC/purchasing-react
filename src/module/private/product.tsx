@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -90,13 +90,13 @@ export const ProductManage=()=>{
   const [posts,setPosts]= useState([])
   const[state,setState]=useState(false)
   const[title,setTitle]=useState('ALL PRODUCT')
-
+  const navigate = useNavigate()
+  const token = getCookie('token')
   const client = axios.create({
-    baseURL: "http://localhost:3000" 
+    baseURL: "https://purchasing-v1.onrender.com" 
   });
   const deleteItem=(id:string,index:number)=>{
-    const token = getCookie('token')
-    client.delete('http://localhost:3000/api/v1/products/'+id,{headers:{authorization:'Bearer '+token}})
+    client.delete('https://purchasing-v1.onrender.com/api/v1/products/'+id,{headers:{authorization:'Bearer '+token}})
     const newpost=[...posts]
     if(index===0){
         newpost.shift()
@@ -105,25 +105,35 @@ export const ProductManage=()=>{
     }
     setPosts(newpost)
   }
+  
+  const fetchData= async(api:string)=>{
+    try {
+     if (token===''){
+         navigate('/api/v1/login')
+     }
+     const  res = await axios.get(api)
+     
+    setPosts(res.data)
+    console.log(res.data)
+    } catch (error) {
+     console.log(error)
+    } 
+ }
    
 
   useEffect(()=>{
     let api=''
     if(title==='ALL PRODUCT'){
-    api = 'http://localhost:3000/api/v1/products/'
+    api = 'https://purchasing-v1.onrender.com/api/v1/products/'
     }else{
         let newtitle = title.toLowerCase()
          const firchart = newtitle[0].toUpperCase()
          newtitle = newtitle.slice(1)
          newtitle = firchart+newtitle
-         api = 'http://localhost:3000/api/v1/products/?catalog='+newtitle
+         api = 'https://purchasing-v1.onrender.com/api/v1/products/?catalog='+newtitle
     }
-    fetch(api)
-    .then(res=>res.json())
-    .then(posts=>{
-      console.log(posts)
-      setPosts(posts)
-    })
+    console.log(api)
+    fetchData(api)
   },[title])  
   
   const handleOnclick=()=>{
