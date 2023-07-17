@@ -29,13 +29,3 @@ export const PublicRouter =()=>{
       </Routes>)
 }
 
-export const PrivateRouter=()=>{
-    return(
-        <Routes>
-            <Route path='/enterprise/v1/order' element={<OrderManagement/>}/>
-            <Route path='/enterprise/v1/product' element={<ProductManage/>}/>
-            <Route path='/enterprise/v1/product/:id' element={<ManageProduct/>}/>
-            <Route path='/enterprise/v1/createproduct' element={<CreateProduct/>}/>
-        </Routes>
-    )
-}
