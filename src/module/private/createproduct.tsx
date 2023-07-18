@@ -9,7 +9,7 @@ export const CreateProduct=()=>{
     const token=getCookie('token')
   
     const client = axios.create({
-      baseURL: "http://localhost:3000" 
+      baseURL: "https://purchasing-v1.onrender.com" 
     });
     const navigate = useNavigate()
       const [image, setImage] = useState('');
@@ -82,7 +82,7 @@ export const CreateProduct=()=>{
     }
    
     try{
-      const res = await client.post('http://localhost:3000/api/v1/products/',formdata,{
+      const res = await client.post('https://purchasing-v1.onrender.com/api/v1/products/',formdata,{
         headers:{authorization:'Bearer '+token}
         })
         console.log(res.data)

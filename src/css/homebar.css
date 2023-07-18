@@ -6,6 +6,7 @@
   width: 428px;
   z-index: 10;
   box-shadow: 0px 2px #565555;
+  height: 10%;
  }
  .cover .box {
     background-color: #ffffff;

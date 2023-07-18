@@ -5,50 +5,6 @@ import '../../css/order.css'
 import {  useNavigate } from "react-router-dom";
 
 
-
-const BuyCart=()=>{
-    const [carts,setCarts]=useState( localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '{}') : [])
-  let newcarts= [...carts]
-  console.log(carts)
-    const updateQuantity=(index:number,quantity:number)=>{
-      carts[index].quantity=quantity
-      setCarts(newcarts)
-    }
-    const remove=(index:number)=>{
-       newcarts.splice(index,index+1)
-        setCarts(newcarts)
-    }
-    const updateSize=(index:number,size:string)=>{
-        newcarts[index].size=size
-        setCarts(newcarts)
-    }
-    const saveCart=()=>{
-        localStorage.setItem('cart',JSON.stringify(carts))
-    }
-    return(
-    <div>
-        <div>
-            { carts.map((cart:any,index:number)=>
-              <li key={index}>  
-                <CartProduct
-                index={index}
-                productid={cart._id}
-                productname={cart.productname}
-                imagePath={cart.imagePath}
-                size={cart.size}
-                price={cart.price}
-                quantity={cart.quantity}
-                catalog={cart.catalog}
-                remove={remove}
-                updateQuantity={updateQuantity}
-                updateSize={updateSize}
-                />
-                </li>)}
-                
-        </div>
-    </div>
-      )
-  }
 export const Order=()=>{
     const client = axios.create({
         baseURL: "https://purchasing-v1.onrender.com" 
@@ -107,8 +63,8 @@ export const Order=()=>{
   
     const emailpattern = "/^(([^<>()[\]\\.,;:\s@"+'"]+(\.[^<>()[\]\\.,;:\s@'+'"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
     return(
-        <div className="OrderWrapper">
-          {(!orderName||(!phoneNumber)||(!address)||(!email))?
+      <div>
+        {(!orderName||(!phoneNumber)||(!address)||(!email))?
              <div className="orderFooter">
              <div className="amountOrder" >Total :{amount}$$$</div>
              <div className="Buy" ><div className="text-Content">Comfirm</div></div>
@@ -117,6 +73,8 @@ export const Order=()=>{
              <div className="amountOrder" >Total :{amount}$$$</div>
              <div className="Buy" role="button" onClick={addpost}><div className="text-Content">Comfirm</div></div>
              </div>}
+        <div className="OrderWrapper">
+          
             <h1 className="Header">GET YOUR ORDER</h1>
             <div className="Wrapper">
                  <a>Your name</a>
@@ -136,7 +94,7 @@ export const Order=()=>{
             </div>
             <div className="cartWrapper">
             { carts.map((cart:any,index:number)=>
-              <li key={index}>  
+              <div key={index}>  
                 <CartProduct
                 index={index}
                 productid={cart._id}
@@ -150,9 +108,10 @@ export const Order=()=>{
                 updateQuantity={updateQuantity}
                 updateSize={updateSize}
                 />
-                </li>)}   
+                </div>)}   
              </div>
              
+        </div>
         </div>
     )
 }

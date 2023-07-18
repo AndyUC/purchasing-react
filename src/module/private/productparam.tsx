@@ -7,12 +7,12 @@ import { getCookie } from "../cookie";
 export const ManageProduct=()=>{
   
   const client = axios.create({
-    baseURL: "http://localhost:3000" 
+    baseURL: "https://purchasing-v1.onrender.com" 
   });
   const navigate = useNavigate()
     const params = useParams();
     const id=params.id;
-    const api='http://localhost:3000/api/v1/products/'+id
+    const api='https://purchasing-v1.onrender.com/api/v1/products/'+id
     const [image, setImage] = useState('');
     const [productname, setProductname] = useState('');
     const [description, setDescription] = useState('');
@@ -108,7 +108,7 @@ export const ManageProduct=()=>{
   }
  
   try{
-    const res = await client.patch('http://localhost:3000/api/v1/products/'+id,formdata,{
+    const res = await client.patch('/api/v1/products/'+id,formdata,{
       headers:{authorization:'Bearer '+token}
       })
       navigate('/enterprise/v1/product')

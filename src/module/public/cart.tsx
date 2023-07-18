@@ -38,7 +38,7 @@ type CartProductProps={
           <div className="cartProduct">
             <img className="productimg" alt={props.productname} src={props.imagePath} />
             <div className="productname">{props.productname}</div>
-            <div className="price">{props.price}</div>
+            <div className="price">{props.price}$$$</div>
             <div className="quantityWrapper">QUANTITY:
                 <button className="button" onClick={handleAddclick}>+</button>
                 <div className="quantity">{props.quantity}</div>
@@ -60,11 +60,9 @@ type CartProductProps={
               <option value='size40'>Size40</option>
               <option value='size41'>Size41</option>
               <option value='size42'>Size42</option>
-            </select>)
-                }
-            </div>
-            <button className="remove"onClick={()=>props.remove(props.index)}>Remove</button>
-            </div>
+            </select>)}
+            </div></div>
+            <div role={'button'} className="remove"onClick={()=>props.remove(props.index)}>Remove</div> 
             </div>
         </div>
       </div>  
@@ -109,11 +107,12 @@ type CartProductProps={
     return(
     <div>
        <div className="cartFooter">
-       <div className="saveCart" role="button" onClick={()=>{saveCart(); navigate('/api/v1/products')}}><div className="text-Content">Save</div></div>
-       <div className="amountCart">Total :{amount}$$$</div>
-       <div className="Buy" onClick={()=>{saveCart(); navigate('/api/v1/order')}}><div className="text-Content">Buy Cart</div></div>
+        <div className="saveCart" role="button" onClick={()=>{saveCart(); navigate('/api/v1/products')}}><div className="text-Content">Save</div></div>
+        <div className="amountCart">Total :{amount}$$$</div>
+        <div className="Buy" onClick={()=>{saveCart(); navigate('/api/v1/order')}}><div className="text-Content">Buy Cart</div></div>
        </div>
-       <h1>BUILD CART</h1>
+       <div>
+       <h1 className="TITLE">BUILD CART</h1>
         <div>
             { carts.map((cart:any,index:number)=>
               <div key={index}>  
@@ -131,9 +130,9 @@ type CartProductProps={
                 updateSize={updateSize}
                 />
                 </div>)}
-                
+           
         </div>
-       
+        </div>
     </div>
       )
   }

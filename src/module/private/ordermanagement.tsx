@@ -20,11 +20,11 @@ type Order={
 function OrderComponent(props:Order) {
     const token = getCookie('token')
     const client = axios.create({
-        baseURL: "http://localhost:3000" 
+        baseURL: "https://purchasing-v1.onrender.com" 
       });
     async function moveTo(arg:String) {
         try {
-            const res = await client.patch('http://localhost:3000/api/v1/order/'+props.orderId,{status:arg},{
+            const res = await client.patch('https://purchasing-v1.onrender.com/api/v1/order/'+props.orderId,{status:arg},{
                 headers:{authorization:'Bearer '+token}
                 })
                 props.setOrders();
@@ -115,7 +115,7 @@ export const OrderManagement=()=>{
         if (token===''){
             navigate('/api/v1/login')
         }
-        const  res = await axios.get('http://localhost:3000/api/v1/order/?orderStatus='+orderStatus,{headers:{authorization:'Bearer '+token}})
+        const  res = await axios.get('https://purchasing-v1.onrender.com/api/v1/order/?orderStatus='+orderStatus,{headers:{authorization:'Bearer '+token}})
         
        setOrders(res.data.orders)
        console.log(res.data.orders)
@@ -125,7 +125,7 @@ export const OrderManagement=()=>{
     }
     useEffect(()=>{
         console.log(orderStatus)
-    let api = 'http://localhost:3000/api/v1/order/?orderStatus='+orderStatus
+    let api = 'https://purchasing-v1.onrender.com/api/v1/order/?orderStatus='+orderStatus
     console.log(api)
        fetchData(api)
   },[orderStatus])
