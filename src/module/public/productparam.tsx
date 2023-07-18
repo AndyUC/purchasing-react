@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import '../../css/productparams.css'
 import axios from "axios";
+import { Back } from "../backbutton";
 
 
 
@@ -58,6 +59,7 @@ export const GetProduct=()=>{
     }
     return (
     <div className="productbox">
+      <Back/>
       <div className="element-wrapper">
         <img className="product-image" alt={post._id} src={post.imgpath} width='200px' height='200px' />
         <h1 className="productName">{post.productname}</h1>

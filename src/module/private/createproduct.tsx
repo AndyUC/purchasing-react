@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { getCookie } from "../cookie";
 
 import chevronDown from '../../image/chevronDown.svg'
+import { Back } from "../backbutton";
 
 export const CreateProduct=()=>{
     const token=getCookie('token')
@@ -102,6 +103,7 @@ navigate('/api/v1/login')
 }
 return (
       <div className="productbox">
+        <Back/>
         <div className="productUpdateWrapper">
           <h2>Create new product</h2>
           <div className="fieldUpdate">

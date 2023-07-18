@@ -2,6 +2,7 @@ import React, {Fragment,useState,useEffect, Component, ChangeEvent, useRef} from
 import { Link, useNavigate } from "react-router-dom";
 
 import '../../css/cart.css'
+import { Back } from "../backbutton";
 
 type CartProductProps={
     index:number,
@@ -112,6 +113,7 @@ type CartProductProps={
         <div className="Buy" onClick={()=>{saveCart(); navigate('/api/v1/order')}}><div className="text-Content">Buy Cart</div></div>
        </div>
        <div>
+          <Back/>
        <h1 className="TITLE">BUILD CART</h1>
         <div>
             { carts.map((cart:any,index:number)=>

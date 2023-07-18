@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import '../../css/updateproduct.css'
 import { getCookie } from "../cookie";
+import { Back } from "../backbutton";
 
 export const ManageProduct=()=>{
   
@@ -120,6 +121,7 @@ export const ManageProduct=()=>{
 
     return (
     <div className="productbox">
+      <Back/>
       <div className="productUpdateWrapper">
         <h2>ID: {id}</h2>
         <img className="product-image" alt={id} src={image} width='200px' height='200px' />

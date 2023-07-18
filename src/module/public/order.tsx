@@ -3,7 +3,7 @@ import axios from "axios";
 import { CartProduct } from "./cart";
 import '../../css/order.css'
 import {  useNavigate } from "react-router-dom";
-
+import { Back } from "../backbutton";
 
 export const Order=()=>{
     const client = axios.create({
@@ -92,6 +92,7 @@ export const Order=()=>{
                  <a>Your email</a>
                 <input className="textbox"key={'email'} onChange={(e)=>setEmail(e.target.value)} placeholder="Please provide your email" pattern={emailpattern}/>
             </div>
+            <Back/>
             <div className="cartWrapper">
             { carts.map((cart:any,index:number)=>
               <div key={index}>  

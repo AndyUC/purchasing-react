@@ -38,19 +38,7 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    margin-top: 535px;
-    border: solid 0.5px black;
-    width: 100%;
-    background-color: white;
-}
- .orderFooter{
-    display: flex;
-    flex-direction: row;
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    margin-top: 805px;
+    bottom:0px;
     border: solid 0.5px black;
     width: 100%;
     background-color: white;
@@ -60,9 +48,10 @@
     font-size: x-large;
     font-family: sans-serif;
     color:white;
+    width: 75%;
 }
  .orderFooter .Buy{
-    width: 120px;
+    width: 26%;
     background-color: black;
     height: 100%;
     color: black;
