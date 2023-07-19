@@ -6,9 +6,8 @@
     width: 300px;
     z-index: 11;
     background-color: white;
-
-    margin-top: -140px;
-    margin-left: 125px;
+    top:0;
+    right:0
 }
 
 .filters .filterWrapper{

@@ -4,6 +4,7 @@
     justify-content: center;
     width: 250px;
     position: absolute;
+    left: 0;
   }
   
   .menu-bar .menu-wrapper {
