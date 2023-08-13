@@ -67,8 +67,16 @@
   }
   .offfilter{
     position: fixed;
-    z-index: 12;
+    z-index: 40;
     right: 10px;
     top: 10px;
   }
-  
+.filterbox .filterboxWraper .filterSiteMark{
+  opacity: 25%;
+  background-color:#000000;
+  z-index: 20;
+  position: fixed;
+  top:0;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}

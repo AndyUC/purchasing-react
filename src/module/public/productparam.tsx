@@ -1,10 +1,12 @@
 
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import '../../css/productparams.css'
 import axios from "axios";
 import { Back } from "../backbutton";
+import { CartContext, useCartContext} from "../../store/Provide";
+
 
 
 
@@ -14,7 +16,8 @@ export const GetProduct=()=>{
     const id=params.id;
     const api='https://purchasing-v1.onrender.com/api/v1/products/'+id
     const[post,setPost]=useState(Object)
-
+    const navigate = useNavigate();
+    const {cart, setCart}= useCartContext();
     const fetchData= async(api:string)=>{
       try {
        const  res = await axios.get(api)
@@ -22,7 +25,6 @@ export const GetProduct=()=>{
         setSize('sizeS')}
       else{
         setSize('size39')}
-      setPost(res.data)
       setPost(res.data)
       console.log(res.data)
       } catch (error) {
@@ -44,60 +46,59 @@ export const GetProduct=()=>{
       
     }
     const addToCart=()=>{
-      let cartdata=[]
-     
-      cartdata =localStorage.getItem('cart')? JSON.parse(localStorage.getItem('cart')||'{}'):[]
-      cartdata.push({productid:post._id,productname:post.productname,imagePath:post.imgpath,
-        description:post.description,
-        catalog:post.catalog,price:post.price,size:size,quantity:quantity})
-    localStorage.setItem('cart',JSON.stringify(cartdata))
+        setCart([...cart,{productid:post._id,productname:post.productname,imagePath:post.imgpath,
+          catalog:post.catalog,price:post.price,size:size,quantity:quantity}])
+    localStorage.setItem('cart',JSON.stringify(cart))
+    
     }
     
     const [size,setSize]=useState('')
-    const handleChange=(event:any)=>{
-      setSize(event.target.value)
-    }
+    
     return (
     <div className="productbox">
       <Back/>
+      
       <div className="element-wrapper">
         <img className="product-image" alt={post._id} src={post.imgpath} width='200px' height='200px' />
-        <h1 className="productName">{post.productname}</h1>
-        <h2 className="description">{post.description}</h2>
-        <h1 className="price">{post.price}</h1>
+        <div className="productName">{post.productname}</div>
+        <div className="price">{post.price} US$</div>
+        
         <div className="size">
-                    Size : 
-                {(post.catalog==='Chain'||post.catalog==='Tie')?
-            (<select name="sizeSelection" defaultValue={size} value={this} onChange={handleChange} >
-            <option value={'sizeS'}>SizeS</option>
-            <option value={'sizeM'}>SizeM</option>
-            <option value={'sizeL'}>SizeL</option>
-          </select>)
-              :
-              
-              (  <select name="sizeSelection" defaultValue={size} onChange={handleChange} >
-              <option value={'size39'}>Size39</option>
-              <option value={'size40'}>Size40</option>
-              <option value={'size41'}>Size41</option>
-              <option value={'size42'}>Size42</option>
-            </select>)}
+                   <div className="size-text">Size : {size.split('size')[1]}</div> 
+            {(post.catalog==='Chain'||post.catalog==='Tie')?
+           (<div className="sizeSelection">
+           <div className="Size" role='button' style={(size==='sizeS')?{backgroundColor:'red',color:'white'}:{}}  onClick={()=>setSize('sizeS')}>SizeS</div>
+           <div className="Size" role='button' style={(size==='sizeM')?{backgroundColor:'Blue',color:'white'}:{}}  onClick={()=>setSize('sizeM')} >SizeM</div>
+           <div className="Size" role='button' style={(size==='sizeL')?{backgroundColor:'Green',color:'white'}:{}}  onClick={()=>setSize('sizeL')} >SizeL</div>
+         </div>):
+         <div className="sizeSelection">
+         <div className="Size" role='button' style={(size==='size39')?{backgroundColor:'red',color:'white'}:{}}  onClick={()=>setSize('size39')}>Size39</div>
+         <div className="Size" role='button' style={(size==='size40')?{backgroundColor:'Blue',color:'white'}:{}}  onClick={()=>setSize('size40')} >Size40</div>
+         <div className="Size" role='button' style={(size==='size41')?{backgroundColor:'Green',color:'white'}:{}}  onClick={()=>setSize('size41')} >Size41</div>
+         <div className="Size" role='button' style={(size==='size42')?{backgroundColor:'Purple',color:'white'}:{}}  onClick={()=>setSize('size42')} >Size42</div>
+       </div>
+         }
+          </div>
+          <h2 className="description">{post.description}</h2>
           </div>
         <div className="customSelect">
-        <button className="button" onClick={handleAddclick}>+</button>
-        <div className="quantity">{quantity}</div>
-        <button className="button" onClick={handleDecreaseClick}>-</button>
+        <div className="quantity">
+        <div role="button" className="button" onClick={handleAddclick}>+</div>
+        <div className="quantityValue" role="textbox">{quantity}</div>
+        <div role="button" className="button" onClick={handleDecreaseClick}>-</div>
+        </div>
         {quantity<=0?
-         ( <div className="Addtocart">
+         ( <div className="addToCart">
           <div className="Content">ADD TO CART</div>
         </div>
         ):
-          (<Link className="Addtocart" role='button' onClick={addToCart} to={'/api/v1/products/'} >
+          (<div className="addToCart" role='button' onClick={()=>{addToCart();navigate('/products/')}} >
           <div className="Content">ADD TO CART</div>
-        </Link>
+        </div>
         )}
         
         </div>
-      </div>
+      
     </div>
     );
   }

@@ -1,25 +1,45 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import { MenuBar } from './menubar';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import '../../../css/homebar.css'
+import '../../../css/nav/homebar.css'
 
 import barIcon from '../../../image/bars-solid.svg'
 import cartIcon from '../../../image/cart-shopping-solid.svg'
 import warehouse from '../../../image/warehouse.svg'
 import create from '../../../image/create.svg'
+import { Cart } from '../cart';
+import { useCartContext } from '../../../store/Provide';
+
+const CartNav=()=>{
+   const {cart}= useCartContext();
+   const [amount, setAmount] = useState(0);
+   const [showCart, setShowCart] = useState(false);
+   useEffect(()=>{
+     let total =0;
+     cart.forEach((cart:any )=> {
+       total +=cart.price*cart.quantity
+     })
+   setAmount(total)},[cart])
+
+  return <div className='cartIconWraper' >
+         {cart.length>0&&<div className='cartCount'>{cart.length}</div>}
+         {cart.length>0&&<div className='Amount'>{amount} US$ </div>}
+         <img className="cart" role='button' onClick={()=>setShowCart(!showCart)} alt="cart" src={cartIcon}  />
+         {showCart&&<div>
+            <Cart  setShowCart={setShowCart}/>
+            <div className='cartSiteMark' role='button'  onClick={()=>setShowCart(!showCart)}/>
+            </div>}
+    </div >
+}
 
 
 const Homebar=()=>{
    const location= useLocation()
     const [state,setState]=useState(false)
     const handleOnclick=()=>{
-        if(state===true){
-            setState(false)
-        }else{
-            setState(true)
-        }
+       setState(!state)
     }
     return(
     <div>
@@ -27,26 +47,30 @@ const Homebar=()=>{
        
         <div className="box">
        
-         <img className="bar" alt="bar" src={barIcon} role="button" onClick={handleOnclick} />
-        {(location.pathname.includes('/api/v1')||(location.pathname==='/'))&&
-        <Link to={'/api/v1/cart'}>
-         <img className="cart" alt="cart" src={cartIcon}  />
-         </Link >}
+         
+        {!location.pathname.includes('/admin')&&
+        <CartNav/>}
         
-         {state&&<MenuBar/>
-        }
-        {location.pathname.includes('/enterprise/v1')&&
+        
+        {location.pathname.includes('/admin')&&
         <div className='icon'>
-            <Link to={'/enterprise/v1/product'}>
+            <Link to={'/admin/products'}>
          <img className="warehouse" alt="warehouse" src={warehouse}  />
          </Link >
-         <Link to={'/enterprise/v1/createproduct'}>
+         <Link to={'/admin/createproduct'}>
          <img className="create" alt="create" src={create}  />
          </Link >
         </div>
         }  
         </div>
  </div>
+ <img className="bar" alt="bar" src={barIcon} role="button" onClick={handleOnclick} />
+         {state&&
+         <div>
+         <MenuBar/>
+         <div role='button' className='siteMark' onClick={()=>setState(!state)}/>
+         </div>
+        }
  </div>
 )
 }

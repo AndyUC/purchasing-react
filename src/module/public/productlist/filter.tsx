@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import filter from '../../../image/filter-solid.svg';
 import { FilterBar } from "./filterBar";
 import deleteicon from '../../../image/delete.svg';
-import '../../../css/filter.css'
+import '../../../css/filter/filter.css'
 
 export const Filter=()=>{
     const [filterBar, setFilterBar] = useState(false);
@@ -36,7 +36,7 @@ export const Filter=()=>{
           url+=url+search+'&'
         }
       })
-        navigate('/api/v1/products?'+url)
+        navigate('/products?'+url)
     }
     const removeSortFilter=()=>{
       let url=''
@@ -45,7 +45,7 @@ export const Filter=()=>{
           url+=url+search+'&'
         }
       })
-        navigate('/api/v1/products?'+url) 
+        navigate('/products?'+url) 
     }
     
     
@@ -56,9 +56,10 @@ export const Filter=()=>{
             <a className="text-wrapper" onClick={()=>setFilterBar(!filterBar)}>Filter</a>
           </button>
           {filterBar&&(
-          <div>
+          <div className="filterboxWraper">
           <FilterBar/>
           <img className="offfilter" src={deleteicon} width='30px' height={'30px'}role='button'onClick={()=>setFilterBar(false)}/>
+          <div role='button' className='filterSiteMark' onClick={()=>setFilterBar(false)}/>
           </div>
           )}
           <div className="filtershowed">

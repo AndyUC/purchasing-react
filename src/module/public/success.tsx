@@ -12,7 +12,7 @@ export const Success=()=>{
           <div className="SucessWraper">
             <p className="SuccessText">We have sent the order information to your email</p>
           </div>
-        <Link className="buymoreWrapper" to ={'/api/v1/products'}>
+        <Link className="buymoreWrapper" to ={'/products'}>
           <button className="buyMore">
             <h2>By more</h2></button>
         </Link>

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { getCookie } from '../cookie';
 import '../../css/ordermanagement.css'
+import { client } from '../axiosURL';
+
 
 type Order={
     index:number,
@@ -19,9 +21,7 @@ type Order={
 }
 function OrderComponent(props:Order) {
     const token = getCookie('token')
-    const client = axios.create({
-        baseURL: "https://purchasing-v1.onrender.com" 
-      });
+
     async function moveTo(arg:String) {
         try {
             const res = await client.patch('https://purchasing-v1.onrender.com/api/v1/order/'+props.orderId,{status:arg},{
@@ -75,17 +75,17 @@ function OrderComponent(props:Order) {
             {(props.status==='packaging')?
             <div className='orderHandle'>
                <div className='timeStamp'>Create At :{props.createtime.toString()}</div> 
-               <div role={'button'} onClick={()=>{moveTo('shipping')}}> Move to shipping</div>
+               <div className='changeStatus' role={'button'} onClick={()=>{moveTo('shipping')}}> Move to shipping</div>
             </div>:
             (props.status==='shipping')?
             <div className='orderHandle'>
-                <div>Start Ship At :{props.updatetime.toString()}</div> 
-               <div role={'button'} onClick={()=>{moveTo('completed')}}> Move to Complete</div>
-               <div role={'button'} onClick={()=>{moveTo('pakaging')}}> Return back to Pakaging</div>
+                <div className='timeStamp'>Start Ship At :{props.updatetime.toString()}</div> 
+               <div className='changeStatus'  role={'button'} onClick={()=>{moveTo('completed')}}> Move to Complete</div>
+               <div className='changeStatus' role={'button'} onClick={()=>{moveTo('pakaging')}}> Return back to Pakaging</div>
             </div>:
             <div>
                  <div className='timeStamp'>Complete At :{props.updatetime.toString()}</div> 
-               <div role={'button'} onClick={()=>{moveTo('shipping')}}> Return back to shipping</div>
+               <div className='changeStatus' role={'button'} onClick={()=>{moveTo('shipping')}}> Return back to shipping</div>
             </div>
             }
         </div>
@@ -113,7 +113,7 @@ export const OrderManagement=()=>{
     const fetchData= async(api:string)=>{
        try {
         if (token===''){
-            navigate('/api/v1/login')
+            navigate('/admin/login')
         }
         const  res = await axios.get('https://purchasing-v1.onrender.com/api/v1/order/?orderStatus='+orderStatus,{headers:{authorization:'Bearer '+token}})
         

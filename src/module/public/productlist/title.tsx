@@ -14,11 +14,11 @@ const SelectCatalog =()=>{
   return(
     <div className="CATALOG-MULTICHOICE">
     <div className="div">
-      <Link className="text-wrapper" to='/api/v1/products/?catalog=Glass' >GLASS</Link>
-      <Link className="text-wrapper-2" to='/api/v1/products/?catalog=Chain'>CHAIN</Link>
-      <Link className="text-wrapper-3" to='/api/v1/products/?catalog=Watch'>WATCH</Link>
-      <Link className="text-wrapper-4" to='/api/v1/products/?catalog=Tie'>TIE</Link>
-      <Link className="text-wrapper-5" to='/api/v1/products/'>ALL PRODUCT</Link>
+      <Link className="text-wrapper" to='/products/?catalog=Glass' >GLASS</Link>
+      <Link className="text-wrapper-2" to='/products/?catalog=Chain'>CHAIN</Link>
+      <Link className="text-wrapper-3" to='/products/?catalog=Watch'>WATCH</Link>
+      <Link className="text-wrapper-4" to='/products/?catalog=Tie'>TIE</Link>
+      <Link className="text-wrapper-5" to='/products/'>ALL PRODUCT</Link>
     </div>
   </div>
   )
@@ -42,21 +42,22 @@ const searchs = location.search.split('&')
 searchs.map((search:string)=>{
     if(search.includes('catalog')){
         const item = search.split('=')
-        title=item[1]
+        title=item[1].toUpperCase()
     }
 })
 
   return(
-    <div className="box" role='button' onClick={handleOnclick}>
+    <div className="box" role='button'style={state?{zIndex:12}:{zIndex:5}} onClick={handleOnclick}>
       <div className="group-wrapper">
-        <div className="group">
-          <div className="overlap-group">
+        <div className="group" style={state?{zIndex:12}:{zIndex:1}}>
+          <div className="overlap-group" style={state?{zIndex:12}:{zIndex:1}}>
           <div className="text-wrapper">{title}</div>
-            <img className="icon-ionic-ios-arrow" alt="Icon ionic ios arrow" src={chevronDown} />
+            <img className="icon-ionic-ios-arrow" style={{transform:state?'rotate(180deg)':''}} alt="Icon ionic ios arrow" src={chevronDown} />
           </div>
         </div>
       </div>
       {state&&<SelectCatalog/>}
+      {state&&<div role="button" className="titleSiteMark" onClick={()=>setState(!state)}/>}
     </div>
     )
 }

@@ -8,13 +8,14 @@
     flex-direction: column;
    
     justify-content: flex-start;
+    position: relative;
   }
   
   .box .group-wrapper {
     height: 30px;
     overflow-x: hidden;
     width: 240px;
-    z-index: 6;
+   
     box-shadow: 0.5px 0.5px #a2a2a2;
   }
   
@@ -30,6 +31,7 @@
     height: 30px;
     position: relative;
     width: 240px;
+  
   }
   
   .box .text-wrapper {
@@ -46,6 +48,7 @@
     top: 0;
     white-space: nowrap;
     width: 240px;
+    z-index: 11;
   }
   
   .box .icon-ionic-ios-arrow {
@@ -54,6 +57,7 @@
     position: absolute;
     top: 8px;
     width: 18px;
+    z-index: 11;
   }
 
   .box .CATALOG-MULTICHOICE {
@@ -62,7 +66,7 @@
     flex-direction: row;
     justify-content: center;
     width: 240px;
-    z-index: 5;
+    z-index: 10;
     position: absolute;
   }
   
@@ -144,4 +148,12 @@
     text-align: center;
     top: 246px;
     width: 240px;
+  }
+  .box .titleSiteMark{
+    opacity: 25%;
+    z-index: 9;
+    position: fixed;
+    top:0;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
   }

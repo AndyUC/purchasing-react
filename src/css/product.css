@@ -5,59 +5,74 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        width: 100%;
-        row-gap: 5px;
+        width: 96%;
+        row-gap: 20px;
         column-gap: 5px;
         columns: 2;
+        margin-left: 2%;
+        margin-right: 2%;
       
    }
  
   
    .product {
-    height: 279px;
     position: relative;
-    width: 200px;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    max-width: 200px;
+    height: auto;
   }
+  .storageProduct {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .currentItem {
+    position: relative;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
   
    .productimg {
-    height: 160px;
+    
     object-fit: cover;
     position: static;
-    width: 190px;
+    width: 100%;
+    aspect-ratio: 2/3;
     background-color: #a8a4a4;
   }
   
   
    .productname {
     color: #333a3a;
-    font-size: 25px;
+    font-size:18px !important;
+    font-family: 'sans-serif';
     font-weight: 400;
-    line-height: 16.2px;
-    text-decoration: none;
     margin-block-start: 10px;
     margin-block-end: 10px;
-    margin-inline-start: 0px;
+    margin-inline-start: 2px;
+    background-color: white;
   }
   
    .price {
     color: #333333;
     font-family: "Montserrat-Bold", Helvetica;
-    font-size: 20px;
+    font-size: 20px !important;
     font-weight: 700;
     left: 116px;
     letter-spacing: 0.75px;
     line-height: 18.8px;
-    position: absolute;
     text-align: center;
     white-space: nowrap;
     width: 69px;
   }
   
-  .currentItem{
-    height: 279px;
-    position: relative;
-    width: 200px;
-  }
+ 
   .currentItem .deleteButton{
     width: 20px;
     height: 20px;
@@ -75,4 +90,17 @@
   .description{
     height: 50px;
     width: 180px;
+  }
+  .getProduct{
+    position: absolute;
+    z-index: index 3 !important;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    right:10px;
+    top:10px;
   }

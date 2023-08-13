@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import chart from '../../../image/chart.png'
-import  '../../../css/filterBar.css'
+import  '../../../css/filter/filterBar.css'
 import { useLocation, useNavigate } from "react-router"
 
 
@@ -28,7 +28,7 @@ export const FilterBar=()=>{
           if(sortby!==''){
             url=url+'&sort='+sortby
           }
-          navigate('/api/v1/products'+url)
+          navigate('/products'+url)
         }else{
           let value = location.search.split('?')
           let searchs= value[1].split('&')
@@ -48,7 +48,7 @@ export const FilterBar=()=>{
           if(sortby!==''){
             url=url+'&sort='+sortby
           }
-            navigate('/api/v1/products'+url)
+            navigate('/products'+url)
         }
         
         
@@ -72,17 +72,17 @@ export const FilterBar=()=>{
         <div className="filterTitle">Price</div>
         <img className="chart" src={chart} width='220px' height={'60px'}></img>
         <div className="priceFilter">
-        <div className="pricetitle">MinPrice</div>
+        <div className="pricetitle">From</div>
         <input className="pricevalue" type={'number'} value={minPrice} width='30px' height={'20px'} onChange={(e:any)=>setMinPrice(e.target.value)}/>
         <div className="distance"> </div>
+        <div className="pricetitle">To</div>
         <input className="pricevalue" type={'number'} value={maxPrice} width='30px' height={'20px'}onChange={(e:any)=>setMaxPrice(e.target.value)}/>
-        <div className="pricetitle">MaxPrice</div>
         </div>
         </div>
         <div className="filterFooter">
-        <button className="clearAll" onClick={clearAll}>Clear All</button>
+        <div role="button" className="clearAll" onClick={clearAll}>Clear All</div>
         <div className="filterFooterDistance"></div>
-        <button className="apply" onClick={apply}>Apply</button>
+        <div role="button" className="apply" onClick={apply}>Apply</div>
         </div>
     </div>
     )

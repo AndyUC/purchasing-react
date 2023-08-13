@@ -25,7 +25,7 @@ export const Login=()=>{
                 var d = new Date();
                 d.setTime(d.getTime() + (10*24*60*60*1000));
                 document.cookie='token='+res.data.token+"; expires="+d.toUTCString
-                navigate('/enterprise/v1/order')
+                navigate('/admin')
             }catch(error:any){
                setMsg(error.response.data.msg)
             }

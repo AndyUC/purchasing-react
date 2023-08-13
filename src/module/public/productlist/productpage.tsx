@@ -5,43 +5,63 @@ import { Link } from "react-router-dom";
 
 import '../../../css/title.css'
 import '../../../css/product.css'
-
+import cartIcon from '../../../image/cart-shopping-solid.svg'
 import { Filter } from "./filter";
 import { Title } from "./title";
 import axios from "axios";
+import { client } from "../../axiosURL";
+import { useCartContext } from "../../../store/Provide";
 
 type ProductProps={
   productid:string,
   productname:string,
   imagePath:string,
   price:number,
-  description:string
+  description:string,
+  catalog:string
 }
 
 const ItemProduct=(props:ProductProps)=>{
+  const {cart, setCart}= useCartContext();
+  const handleClick=()=>{
+    localStorage.setItem('cart',JSON.stringify([...cart,{productid:props.productid,
+      productname:props.productname,
+      imagePath:props.imagePath,
+      catalog:props.catalog,
+      size:(props.catalog==='Chain'||props.catalog==='Tie')?'sizeS':'size39',
+      price:props.price,
+      quantity:0}]))
+    setCart([...cart,{productid:props.productid,
+    productname:props.productname,
+    imagePath:props.imagePath,
+    catalog:props.catalog,
+    size:(props.catalog==='Chain'||props.catalog==='Tie')?'sizeS':'size39',
+    price:props.price,
+    quantity:0}])
+    
+  }
   const navigate=useNavigate()
   return(
-    <div key={props.productid}  className="product" role={'button'} onClick={()=>navigate('/api/v1/products/'+props.productid)} >
+    <div key={props.productid}  className="product" >
+      <div role={'button'} onClick={()=>navigate('/products/'+props.productid)} >
       <img className='productimg'  alt={props.productname} src={props.imagePath} />
-      <p className="productname" >{props.productname}</p>
-      <div className="description">
-        {props.description}
+      <div className="productname" >{props.productname}</div>
+      <div className="price">{props.price} US$</div>
       </div>
-      <div className="price">{props.price+ '$$$'}</div>
+      <div role="button" className="getProduct" onClick={handleClick}>
+      <img src={cartIcon} style={{width:'20px',height:'20px'} } />
+      </div>
     </div>
     )
 }
 const Products =()=>{
-  const client = axios.create({
-    baseURL: "https://purchasing-v1.onrender.com" 
-  });
   const [posts,setPosts]= useState([])
 
 const location=useLocation()
 
 const fetchData= async(api:string)=>{
   try {
-   const  res = await axios.get(api)
+   const  res = await client.get(api)
    
   setPosts(res.data)
   console.log(res.data)
@@ -53,7 +73,7 @@ const fetchData= async(api:string)=>{
 
   useEffect(()=>{
     
-    const api = 'https://purchasing-v1.onrender.com/api/v1/products/'+location.search
+    const api = '/api/v1/products/'+location.search
     fetchData(api)
   },[location]);
   
@@ -64,9 +84,10 @@ const fetchData= async(api:string)=>{
   key={post._id}
   productid={post._id}
   productname={post.productname}
-  imagePath={post.imgpath}
+  imagePath={Array.isArray(post.imgpath)?post.imgpath[0]:post.imgpath}
   price={post.price}
   description={post.description}
+  catalog={post.catalog}
   />
  )}
 </div>)

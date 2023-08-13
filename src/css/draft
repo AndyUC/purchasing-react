@@ -1,0 +1,125 @@
+.productbox{
+    display: flex;
+    margin-left: 30px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin-top: 20px;
+    
+}
+
+.productbox .element-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.productbox .element-wrapper .product-image{
+    border: 0.2px solid black;
+    width: 200px;
+    height: 200px;
+    align-self: center;
+}
+
+.productbox .element-wrapper .productName{
+    color: #333333;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 116px;
+    letter-spacing: 0.75px;
+    line-height: 18.8px;
+    position: static;
+    text-align: center;
+    white-space: nowrap;
+    width: 69px;
+    position: static;
+}
+
+
+.productbox .element-wrapper .description{
+    color: #333333;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 116px;
+    letter-spacing: 0.75px;
+    line-height: 18.8px;
+    position: static;
+    text-align: center;
+    white-space: nowrap;
+    width: 69px;
+    position: static;
+}
+
+
+.productbox .element-wrapper .price{
+    color: #333333;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 116px;
+    letter-spacing: 0.75px;
+    line-height: 18.8px;
+    position: static;
+    text-align: center;
+    white-space: nowrap;
+    width: 69px;
+    align-self: left;
+}
+
+.productbox .element-wrapper .customSelect{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+.productbox .element-wrapper .size{
+    color: #333333;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 116px;
+    letter-spacing: 0.75px;
+    line-height: 18.8px;
+    position: static;
+    text-align: center;
+    white-space: nowrap;
+    width: 69px;
+    margin-bottom: 20px;
+}
+
+.productbox .element-wrapper .size .sizeSelection{
+    color: #333333;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    left: 116px;
+    letter-spacing: 0.75px;
+    line-height: 18.8px;
+    position: static;
+    text-align: center;
+    white-space: nowrap;
+    width: 69px;
+}
+
+.productbox .element-wrapper .customSelect .button{
+    width: 25px;
+}
+
+.productbox .element-wrapper .customSelect .quantity{
+    align-self: center;
+}
+
+.productbox .element-wrapper .addToCart {
+    display: flex;
+    width: 120px;
+    background: black;
+    height: 25px;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.productbox .element-wrapper .addToCart .Content{
+    width: 120px;
+    height: auto;
+    color: white;
+}

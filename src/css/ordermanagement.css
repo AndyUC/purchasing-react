@@ -4,7 +4,7 @@
     flex-direction: column;
     row-gap: 10px;
 }
-.Orders .Order{
+.Orders .Order{ 
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -31,4 +31,10 @@
     width: 80px;
     font-weight: bold;
     height: 25px;
+}
+.Orders .Order .timeStamp{
+    text-align: center;
+}
+.Orders .Order .changeStatus{
+    text-align: center;
 }

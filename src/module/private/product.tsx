@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 
 import '../../css/title.css'
 import '../../css/product.css'
-import '../../css/filter.css'
+import '../../css/filter/filter.css'
 
 import chevronDown from '../../image/chevronDown.svg'
 import filter from '../../image/filter-solid.svg'
 import deleteicon from '../../image/delete.svg'
 import { getCookie } from "../cookie";
+import { client } from "../axiosURL";
 
 
 
@@ -76,12 +77,15 @@ type ProductProps={
 }
 
 const ItemStorage=(props:ProductProps)=>{
+  const navigate = useNavigate();
   return(
-    <Link className="product" to ={'/enterprise/v1/product/'+props.productid} >
-      <img className='productimg'  alt={props.productname} src={props.imagePath} />
-      <h1 className="productname" >{props.productname}</h1>
-      <div className="price">{props.price+ '$$$'}</div>
-    </Link>
+    <div key={props.productid}  className="storageProduct" >
+    <div role={'button'} onClick={()=>navigate('/admin/products/'+props.productid)} >
+    <img className='productimg'  alt={props.productname} src={props.imagePath} />
+    <div className="productname" >{props.productname}</div>
+    <div className="price">{props.price} US$</div>
+    </div>
+  </div>
     )
 }
 
@@ -92,9 +96,7 @@ export const ProductManage=()=>{
   const[title,setTitle]=useState('ALL PRODUCT')
   const navigate = useNavigate()
   const token = getCookie('token')
-  const client = axios.create({
-    baseURL: "https://purchasing-v1.onrender.com" 
-  });
+ 
   const deleteItem=(id:string,index:number)=>{
     client.delete('https://purchasing-v1.onrender.com/api/v1/products/'+id,{headers:{authorization:'Bearer '+token}})
     const newpost=[...posts]
@@ -109,7 +111,7 @@ export const ProductManage=()=>{
   const fetchData= async(api:string)=>{
     try {
      if (token===''){
-         navigate('/api/v1/login')
+         navigate('/admin/login')
      }
      const  res = await axios.get(api)
      
@@ -161,14 +163,15 @@ const selectCatalog=(title:string)=>{
         </div>
       </div>
       {state&&<SelectCatalog select={selectCatalog}/>}
+      {state&&<div role="button" className="catalogSiteMark" onClick={()=>setState(!state)}/>}
     </div>
     
       <Filter/>
     <div className="itemcover">
       {posts.map((post:any,index:number)=> 
       <div className="currentItem" key={index}>
-        <img className="deleteButton" role={'button'} alt='delete' src={deleteicon} onClick={()=>deleteItem(post._id,index)}/>
-      <ItemStorage 
+        <img className="deleteButton" style={{backgroundColor:'white',borderRadius:'50%'}} role={'button'} alt='delete' src={deleteicon} onClick={()=>deleteItem(post._id,index)}/>
+      <ItemStorage
         key={post._id}
         productid={post._id}
         productname={post.productname}

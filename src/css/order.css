@@ -15,6 +15,11 @@
     flex-direction: column;
     row-gap:5px
 }
+.OrderWrapper .Wrapper .error{
+    font-size: 12px !important;
+    color: red;
+    margin-left: 10px;
+}
 .OrderWrapper .textbox{
     width: 200px;
 }

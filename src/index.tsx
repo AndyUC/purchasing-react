@@ -9,15 +9,15 @@ import Homebar from './module/public/homebar/homebar';
 
 import { PublicRouter } from './module/app';
 
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   //<React.StrictMode>
     <BrowserRouter>
-      <Homebar/>
-      <PublicRouter/>
-    
+      <PublicRouter/> 
     </BrowserRouter>
   //</React.StrictMode>
 );

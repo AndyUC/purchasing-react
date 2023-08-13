@@ -1,8 +1,10 @@
-import React, {Fragment,useState,useEffect, Component, ChangeEvent, useRef} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useState,useEffect} from "react";
+import {  useNavigate } from "react-router-dom";
 
 import '../../css/cart.css'
+import trash from '../../image/trash-solid.svg'
 import { Back } from "../backbutton";
+import { useCartContext } from "../../store/Provide";
 
 type CartProductProps={
     index:number,
@@ -16,8 +18,6 @@ type CartProductProps={
     remove:Function,
     updateQuantity:Function,
     updateSize:Function
-
-    
   }
   
  export const CartProduct=(props:CartProductProps)=>{
@@ -30,93 +30,91 @@ type CartProductProps={
           props.updateQuantity(props.index,(props.quantity-1))
         }
     }
-   const handleChange=(event:any)=>{
-    props.updateSize(props.index,event.target.value)
+   const handleChange=(size:string)=>{
+    props.updateSize(props.index,size)
    }
     return(
     <div className="cartProductBox" >
+      <div className="Delete" role="button" onClick={()=>props.remove()}>
+        <img className="trash" height={'20px'} width={'20px'} src={trash}/>
+      </div>
         <div className="cartProductWrapper">
+        <img className="productimg" alt={props.productname} src={props.imagePath} />
           <div className="cartProduct">
-            <img className="productimg" alt={props.productname} src={props.imagePath} />
             <div className="productname">{props.productname}</div>
-            <div className="price">{props.price}$$$</div>
-            <div className="quantityWrapper">QUANTITY:
-                <button className="button" onClick={handleAddclick}>+</button>
-                <div className="quantity">{props.quantity}</div>
-                <button className="button" onClick={handleDecreaseClick}>-</button>
-            </div>
+            <div className="cartDeltail">
+            <div className="price">{props.price}  US$</div>
             <div className="size wrap" >
                 <div className="size">
-                    Size : 
+                    Size : {props.size.split('size')}
                 {(props.catalog==='Chain'||props.catalog==='Tie')?
-            (<select name="sizeSelection"  value={props.size} onChange={handleChange} >
-            <option value={'sizeS'}>SizeS</option>
-            <option value={'sizeM'}>SizeM</option>
-            <option value={'sizeL'}>SizeL</option>
-          </select>)
-              :
-              
-              (  <select name="sizeSelection" defaultValue={props.size} onChange={handleChange} >
-              <option value='size39'>Size39</option>
-              <option value='size40'>Size40</option>
-              <option value='size41'>Size41</option>
-              <option value='size42'>Size42</option>
-            </select>)}
-            </div></div>
-            <div role={'button'} className="remove"onClick={()=>props.remove(props.index)}>Remove</div> 
+            (<div className="sizeSelection">
+            <div className="Size" role='button' style={(props.size==='sizeS')?{backgroundColor:'red',color:'white'}:{}}  onClick={()=>handleChange('sizeS')}>SizeS</div>
+            <div className="Size" role='button' style={(props.size==='sizeM')?{backgroundColor:'Blue',color:'white'}:{}}  onClick={()=>handleChange('sizeM')} >SizeM</div>
+            <div className="Size" role='button' style={(props.size==='sizeL')?{backgroundColor:'Green',color:'white'}:{}}  onClick={()=>handleChange('sizeL')} >SizeL</div>
+          </div>):
+          <div className="sizeSelection">
+           <div className="Size" role='button' style={(props.size==='size39')?{backgroundColor:'red',color:'white'}:{}}  onClick={()=>handleChange('size39')}>Size39</div>
+          <div className="Size" role='button' style={(props.size==='size40')?{backgroundColor:'Blue',color:'white'}:{}}  onClick={()=>handleChange('size40')} >Size40</div>
+          <div className="Size" role='button' style={(props.size==='size41')?{backgroundColor:'Green',color:'white'}:{}}  onClick={()=>handleChange('size41')} >Size41</div>
+          <div className="Size" role='button' style={(props.size==='size42')?{backgroundColor:'Purple',color:'white'}:{}}  onClick={()=>handleChange('size42')} >Size42</div>
+        </div>}
+            </div>
+            </div>
+            </div>
             </div>
         </div>
+        
+        <div className="quantityWrapper">
+                <div role="button" className="button" onClick={handleAddclick}>+</div>
+                <div className="quantity">{props.quantity}</div>
+                <div role="button" className="button" onClick={handleDecreaseClick}>-</div>
+        </div>
+        <div className="amountThis">Total :{props.price*props.quantity}</div>
       </div>  
     )
   }
-
- export const Cart=()=>{
-    const [carts,setCarts]=useState( localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '{}') : [])
+type CartType ={
+  setShowCart:Function
+}
+ export const Cart=(props:CartType)=>{
+    const {cart,setCart}=useCartContext()
     const [amount, setAmount] = useState(0);
     const navigate = useNavigate()
-    console.log(amount)
-    
     useEffect(()=>{
       let total =0;
-      carts.forEach((cart:any )=> {
+      cart.forEach((cart:any )=> {
         total +=cart.price*cart.quantity
       })
-    setAmount(total)},[carts])
+    setAmount(total)},[cart])
 
-  let newcarts= [...carts]
-  console.log(carts)
+  let newcart= [...cart]
     const updateQuantity=(index:number,quantity:number)=>{
-      carts[index].quantity=quantity
-      setCarts(newcarts)
+      cart[index].quantity=quantity
+      setCart(newcart)
+      localStorage.setItem('cart',JSON.stringify(newcart))
     }
     const remove=(index:number)=>{
         if(index===0){
-            newcarts.shift()
+            newcart.shift()
         }else{
-            newcarts.splice(index,1)
+            newcart.splice(index,1)
         }
        
-        setCarts(newcarts)
+        setCart(newcart)
+        localStorage.setItem('cart',JSON.stringify(newcart))
     }
     const updateSize=(index:number,size:string)=>{
-        newcarts[index].size=size
-        setCarts(newcarts)
-    }
-    const saveCart=()=>{
-        localStorage.setItem('cart',JSON.stringify(carts))
+        newcart[index].size=size
+        setCart(newcart)
+        localStorage.setItem('cart',JSON.stringify(newcart))
     }
     return(
-    <div>
-       <div className="cartFooter">
-        <div className="saveCart" role="button" onClick={()=>{saveCart(); navigate('/api/v1/products')}}><div className="text-Content">Save</div></div>
-        <div className="amountCart">Total :{amount}$$$</div>
-        <div className="Buy" onClick={()=>{saveCart(); navigate('/api/v1/order')}}><div className="text-Content">Buy Cart</div></div>
-       </div>
-       <div>
-          <Back/>
-       <h1 className="TITLE">BUILD CART</h1>
+ 
+       
+       <div className="CartCover">
         <div>
-            { carts.map((cart:any,index:number)=>
+            { cart.map((cart:any,index:number)=>
               <div key={index}>  
                 <CartProduct
                 index={index}
@@ -132,10 +130,14 @@ type CartProductProps={
                 updateSize={updateSize}
                 />
                 </div>)}
-           
         </div>
+        <div className="cartFooter">
+          <div className="amountCart">Total :{amount}  US$</div>
+          <div className="Buy" onClick={()=>{ navigate('/order');props.setShowCart(false)}}>
+            <div className="text-Content">Buy Cart</div>
+          </div>
         </div>
-    </div>
+       </div>
       )
   }
   
