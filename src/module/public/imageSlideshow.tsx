@@ -32,7 +32,7 @@ const ImageSlideShow = (props:ImageSlideShowProps) => {
   
   useEffect(()=>{
     // eslint-disable-next-line no-restricted-globals
-    setImageWidth(screen.availWidth-120)
+    setImageWidth(screen.availWidth*0.8-20)
   },[// eslint-disable-next-line no-restricted-globals
     screen])
   useEffect(()=>{
@@ -83,7 +83,7 @@ const ImageSlideShow = (props:ImageSlideShowProps) => {
 
   return (
     <div className='Component-Wrapper' style={{display:'flex',flexDirection:'row',width:'100%',marginTop:'10px'}}>
-    <div role='button' style={{display:'flex',width:'50px',top:0,left:0,zIndex:1}} onClick={()=>handlePrevClick()}><img style={{transform:'rotate(90deg)',opacity:'25%'}} src={chevronDown}/></div>
+    <div role='button' style={{display:'flex',width:'10%',top:0,left:0,zIndex:1}} onClick={()=>handlePrevClick()}><img style={{transform:'rotate(90deg)',opacity:'25%'}} src={chevronDown}/></div>
     <div className='ImageWrapper' id='ImageWrapper' style={{width:(ImageWidth+20)+'px',overflow:'hidden'}}  >
     <SafeAreaView>
       <Animated.View style={{display:'flex',width:'auto',flexDirection:'row',marginLeft:(topMotion)}}>
@@ -102,7 +102,7 @@ const ImageSlideShow = (props:ImageSlideShowProps) => {
       </Animated.View>
     </SafeAreaView>
     </div>
-    <div role='button' style={{display:'flex',width:'50px',top:0,left:0,zIndex:1,overflow:'hidden'}} onClick={()=>handleNextClick()}><img style={{transform:'rotate(-90deg)',opacity:'25%'}} src={chevronDown}/></div>
+    <div role='button' style={{display:'flex',width:'10%',top:0,left:0,zIndex:1,overflow:'hidden'}} onClick={()=>handleNextClick()}><img style={{transform:'rotate(-90deg)',opacity:'25%'}} src={chevronDown}/></div>
     </div>
   );
 };
